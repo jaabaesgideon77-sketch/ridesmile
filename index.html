@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0d18">
+  <title>RideSmile — Your Ride. Your Voice. Your Smile.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <main class="app">
+    <section id="welcome" class="screen active">
+      <div class="brand-mark">♡</div>
+      <p class="eyebrow">RIDE SMILE</p>
+      <h1>Good Morning!<br><span>May your day be filled with good moments.</span></h1>
+      <div class="road"></div>
+      <p class="soft">Have a wonderful day! 😊</p>
+      <button class="primary" onclick="show('feedback')">Share Your Feedback <span>→</span></button>
+    </section>
+
+    <section id="feedback" class="screen">
+      <button class="back" onclick="show('welcome')">←</button>
+      <p class="eyebrow">RIDE SMILE</p>
+      <h2>How Was Your Ride Today?</h2>
+      <p class="soft">Your feedback helps me become a better driver.</p>
+
+      <label>Overall Experience</label>
+      <div class="stars" id="stars">
+        <button onclick="rate(1)">★</button><button onclick="rate(2)">★</button>
+        <button onclick="rate(3)">★</button><button onclick="rate(4)">★</button>
+        <button onclick="rate(5)">★</button>
+      </div>
+
+      <label>How was my driving?</label>
+      <div class="choices">
+        <button onclick="pick(this)">Smooth</button>
+        <button onclick="pick(this)">Safe</button>
+        <button onclick="pick(this)">Comfortable</button>
+        <button onclick="pick(this)">Friendly</button>
+      </div>
+
+      <label for="issue">Did you face any issues?</label>
+      <textarea id="issue" placeholder="Tell me what I can improve..."></textarea>
+
+      <label for="liked">What did you like about the ride?</label>
+      <textarea id="liked" placeholder="Share your thoughts..."></textarea>
+
+      <button class="primary" onclick="submitFeedback()">Submit Feedback <span>➤</span></button>
+    </section>
+
+    <section id="success" class="screen">
+      <div class="check">✓</div>
+      <h2>Thank You So Much!</h2>
+      <p class="soft">Your feedback has been received successfully.<br>It helps me serve you even better. 😊</p>
+      <div class="id-card">
+        <small>Your Feedback ID</small>
+        <strong id="feedbackId">#1001</strong>
+        <span>Save this ID to view my reply later.</span>
+      </div>
+      <p class="soft">Have a Beautiful Day! ✨</p>
+      <button class="primary" onclick="show('view')">View My Feedback <span>→</span></button>
+    </section>
+
+    <section id="view" class="screen">
+      <button class="back" onclick="show('success')">←</button>
+      <p class="eyebrow">RIDE SMILE</p>
+      <h2>Your Feedback</h2>
+      <p class="id-line" id="viewId">ID: #1001</p>
+      <div class="card">
+        <div class="row"><b>Your Rating</b><span id="viewStars">★★★★★</span></div>
+        <p id="viewComment">Thank you for sharing your experience.</p>
+      </div>
+      <div class="card reply">
+        <div class="row"><b>Driver's Reply</b><span class="badge">Replied</span></div>
+        <p id="replyText">Thank you so much! I'm glad you had a good experience. It means a lot! 😊</p>
+      </div>
+      <button class="primary" onclick="show('feedback')">Submit Another Feedback <span>→</span></button>
+    </section>
+
+    <section id="dashboard" class="screen">
+      <p class="eyebrow">RIDE SMILE • DRIVER DASHBOARD</p>
+      <h2>Good Morning! 👋</h2>
+      <div class="stats">
+        <div><strong id="total">0</strong><small>Total Feedback</small></div>
+        <div><strong id="avg">0.0 ★</strong><small>Average Rating</small></div>
+        <div><strong id="replied">0</strong><small>Replied</small></div>
+        <div><strong id="pending">0</strong><small>Pending</small></div>
+      </div>
+      <div id="feedbackList"></div>
+      <p class="notice">Demo dashboard only. A real secure login/database will be added before public launch.</p>
+    </section>
+  </main>
+<script src="app.js"></script>
+</body>
+</html>
