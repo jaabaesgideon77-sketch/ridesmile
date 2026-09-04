@@ -13,7 +13,8 @@ function pick(btn){
   btn.classList.add('selected');
 }
 function submitFeedback(){
-  const issue=document.getElementById('issue').value.trim();
+const name=document.getElementById('name').value.trim();
+  const issue=document.getElementById('issue').value.trim();,
   const liked=document.getElementById('liked').value.trim();
   const id='#'+(1000+Number(localStorage.getItem('rideSmileCount')||0)+1);
   const item={id,rating:selectedRating||5,issue,liked,replied:true,reply:"Thank you so much! I'm glad you had a good experience. It means a lot! 😊"};
