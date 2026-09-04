@@ -13,6 +13,39 @@ function pick(btn){
   btn.classList.add('selected');
 }
 function submitFeedback(){
+  const name=document.getElementById('name').value.trim();
+  const issue=document.getElementById('issue').value.trim();
+  const liked=document.getElementById('liked').value.trim();
+
+  const id='#'+(1000+Number(localStorage.getItem('rideSmileCount')||0)+1);
+
+  const item={
+    id,
+    name,
+    rating:selectedRating||5,
+    issue,
+    liked,
+    replied:true,
+    reply:"Thank you so much! I'm glad you had a good experience. It means a lot! 😊"
+  };
+
+  const list=JSON.parse(localStorage.getItem('rideSmileFeedback')||'[]');
+  list.unshift(item);
+  localStorage.setItem('rideSmileFeedback',JSON.stringify(list));
+  localStorage.setItem('rideSmileCount',String(list.length));
+
+  document.getElementById('feedbackId').textContent=id;
+  document.getElementById('viewId').textContent='ID: '+id;
+  document.getElementById('viewStars').textContent='★'.repeat(item.rating)+'☆'.repeat(5-item.rating);
+  document.getElementById('viewComment').textContent=liked||issue||'Thank you for sharing your experience.';
+
+  selectedRating=0;
+  document.getElementById('name').value='';
+  document.getElementById('issue').value='';
+  document.getElementById('liked').value='';
+
+  show('success');
+}
 const name=document.getElementById('name').value.trim();
   const issue=document.getElementById('issue').value.trim();,
   const liked=document.getElementById('liked').value.trim();
