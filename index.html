@@ -3,38 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0d18">
-  <title>RideSmile — Your Ride. Your Voice. Your Smile.</title>
+  <title>RideSmile</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <div class="bg-glow"></div>
+
   <main class="app">
+
+    <!-- Welcome -->
     <section id="welcome" class="screen active">
-      <div class="brand-mark">♡</div>
-      <p class="eyebrow">RIDE SMILE</p>
-      <h1>Good Morning!<br><span>May your day be filled with good moments.</span></h1>
+      <div class="brand-mark">😊</div>
+
+      <div class="eyebrow">RIDESMILE</div>
+
+      <h1>Your Ride.<br>Your Voice.<br><span>Your Smile.</span></h1>
+
+      <p class="soft">
+        May Your Day Be Filled With Good Moments ✨
+      </p>
+
       <div class="road"></div>
-      <p class="soft">Have a wonderful day! 😊</p>
-      <button class="primary" onclick="show('feedback')">Share Your Feedback <span>→</span></button>
+
+      <button class="primary" onclick="show('feedback')">
+        Share Your Feedback <span>→</span>
+      </button>
     </section>
 
+
+    <!-- Feedback -->
     <section id="feedback" class="screen">
+
       <button class="back" onclick="show('welcome')">←</button>
-      <p class="eyebrow">RIDE SMILE</p>
+
+      <div class="eyebrow">RIDESMILE</div>
+
       <h2>How Was Your Ride Today?</h2>
-      <p class="soft">Your feedback helps me become a better driver.</p>
-<label for="name">Your Name</label>
-<input type="text" id="name" placeholder="Enter your name">
-      
-      <label>Overall Experience</label>
+
+      <p class="soft">
+        Your feedback helps me become a better driver.
+      </p>
+
+
+      <label for="name">Your Name</label>
+      <input
+        id="name"
+        type="text"
+        placeholder="Enter your name"
+        maxlength="50"
+      >
+
+
+      <label>Rate Your Ride</label>
+
       <div class="stars" id="stars">
-        <button onclick="rate(1)">★</button><button onclick="rate(2)">★</button>
-        <button onclick="rate(3)">★</button><button onclick="rate(4)">★</button>
+        <button onclick="rate(1)">★</button>
+        <button onclick="rate(2)">★</button>
+        <button onclick="rate(3)">★</button>
+        <button onclick="rate(4)">★</button>
         <button onclick="rate(5)">★</button>
       </div>
 
-      <label>How was my driving?</label>
+
+      <label>How Was The Driving?</label>
+
       <div class="choices">
         <button onclick="pick(this)">Smooth</button>
         <button onclick="pick(this)">Safe</button>
@@ -42,57 +76,119 @@
         <button onclick="pick(this)">Friendly</button>
       </div>
 
-      <label for="issue">Did you face any issues?</label>
-      <textarea id="issue" placeholder="Tell me what I can improve..."></textarea>
 
-      <label for="liked">What did you like about the ride?</label>
-      <textarea id="liked" placeholder="Share your thoughts..."></textarea>
+      <label for="issue">Any Issue?</label>
 
-      <button class="primary" onclick="submitFeedback()">Submit Feedback <span>➤</span></button>
+      <textarea
+        id="issue"
+        placeholder="Tell me if there was anything I could improve..."
+      ></textarea>
+
+
+      <label for="liked">What Did You Like?</label>
+
+      <textarea
+        id="liked"
+        placeholder="Tell me what you liked about your ride..."
+      ></textarea>
+
+
+      <button class="primary" onclick="submitFeedback()">
+        Submit Feedback <span>→</span>
+      </button>
+
     </section>
 
+
+    <!-- Success -->
     <section id="success" class="screen">
+
       <div class="check">✓</div>
-      <h2>Thank You So Much!</h2>
-      <p class="soft">Your feedback has been received successfully.<br>It helps me serve you even better. 😊</p>
+
+      <div class="eyebrow">THANK YOU</div>
+
+      <h2>Feedback Received</h2>
+
+      <p class="soft">
+        Your feedback means a lot. Have a wonderful day! 😊
+      </p>
+
       <div class="id-card">
-        <small>Your Feedback ID</small>
+        <span>Your Feedback ID</span>
         <strong id="feedbackId">#1001</strong>
-        <span>Save this ID to view my reply later.</span>
+        <small>Save this ID to view your feedback later.</small>
       </div>
-      <p class="soft">Have a Beautiful Day! ✨</p>
-      <button class="primary" onclick="show('view')">View My Feedback <span>→</span></button>
+
+      <button class="primary" onclick="show('viewFeedback')">
+        View My Feedback <span>→</span>
+      </button>
+
+      <button class="primary" onclick="show('welcome')">
+        Back To Home
+      </button>
+
     </section>
 
-    <section id="view" class="screen">
+
+    <!-- View Feedback -->
+    <section id="viewFeedback" class="screen">
+
       <button class="back" onclick="show('success')">←</button>
-      <p class="eyebrow">RIDE SMILE</p>
+
+      <div class="eyebrow">RIDESMILE</div>
+
       <h2>Your Feedback</h2>
-      <p class="id-line" id="viewId">ID: #1001</p>
+
       <div class="card">
-        <div class="row"><b>Your Rating</b><span id="viewStars">★★★★★</span></div>
-        <p id="viewComment">Thank you for sharing your experience.</p>
+
+        <div class="row">
+          <b id="viewId">ID: #1001</b>
+          <span id="viewStars">★★★★★</span>
+        </div>
+
+        <p id="viewName">Name: Guest</p>
+
+        <p id="viewComment">
+          Thank you for sharing your experience.
+        </p>
+
       </div>
-      <div class="card reply">
-        <div class="row"><b>Driver's Reply</b><span class="badge">Replied</span></div>
-        <p id="replyText">Thank you so much! I'm glad you had a good experience. It means a lot! 😊</p>
-      </div>
-      <button class="primary" onclick="show('feedback')">Submit Another Feedback <span>→</span></button>
+
+      <button class="primary" onclick="show('welcome')">
+        Back To Home <span>→</span>
+      </button>
+
     </section>
 
+
+    <!-- Feedback Dashboard -->
     <section id="dashboard" class="screen">
-      <p class="eyebrow">RIDE SMILE • DRIVER DASHBOARD</p>
-      <h2>Good Morning! 👋</h2>
+
+      <button class="back" onclick="show('welcome')">←</button>
+
+      <div class="eyebrow">RIDESMILE</div>
+
+      <h2>Feedback</h2>
+
       <div class="stats">
-        <div><strong id="total">0</strong><small>Total Feedback</small></div>
-        <div><strong id="avg">0.0 ★</strong><small>Average Rating</small></div>
-        <div><strong id="replied">0</strong><small>Replied</small></div>
-        <div><strong id="pending">0</strong><small>Pending</small></div>
+        <div>
+          <strong id="total">0</strong>
+          <small>Total</small>
+        </div>
+
+        <div>
+          <strong id="avg">0.0 ★</strong>
+          <small>Average</small>
+        </div>
       </div>
+
       <div id="feedbackList"></div>
-      <p class="notice">Demo dashboard only. A real secure login/database will be added before public launch.</p>
+
     </section>
+
   </main>
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
